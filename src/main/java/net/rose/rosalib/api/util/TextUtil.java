@@ -1,12 +1,16 @@
 package net.rose.rosalib.api.util;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.option.GameOptions;
+import net.minecraft.client.option.KeyBinding;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Function;
 
 public class TextUtil {
     public static @NotNull MutableText inBrackets(@NotNull Text text, @Nullable Style bracketStyle) {
@@ -16,8 +20,8 @@ public class TextUtil {
         return lh.append(text).append(rh);
     }
 
-    public static MutableText getUseText() {
-        final var useOption = MinecraftClient.getInstance().options.useKey.getTranslationKey();
+    public static MutableText getKeyBindingText(Function<GameOptions, KeyBinding> key) {
+        final var useOption = key.apply(MinecraftClient.getInstance().options).getTranslationKey();
         final var optionText = Text.translatable(useOption).formatted(Formatting.GRAY);
         return TextUtil.inBrackets(optionText, null);
     }
