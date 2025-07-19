@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "id": "rosalib",
+  "version": "${version}",
+  "name": "Rosalib",
+  "description": "Modding made easy :>",
+  "authors": [
+    "Rose - for the purr and meows :3!"
+  ],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/rosalib/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "net.rose.rosalib.data.RosalibDataGenerator"
+    ],
+    "client": [
+      "net.rose.rosalib.client.RosalibClient"
+    ],
+    "main": [
+      "net.rose.rosalib.common.Rosalib"
+    ],
+    "cardinal-components-entity": [
+      "net.rose.rosalib.common.init.ModEntityComponents"
+    ],
+    "cardinal-components-world": [
+      "net.rose.rosalib.common.init.ModWorldComponents"
+    ],
+    "cardinal-components-block": [
+      "net.rose.rosalib.common.init.ModBlockComponents"
+    ]
+  },
+  "mixins": [
+    "rosalib.mixins.json"
+  ],
+  "custom": {
+    "cardinal-components": [
+    ]
+  },
+  "accessWidener": "rosalib.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
