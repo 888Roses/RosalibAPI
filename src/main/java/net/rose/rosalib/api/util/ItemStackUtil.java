@@ -23,4 +23,15 @@ public class ItemStackUtil {
         if (amount <= 0 || (owner != null && EntityUtil.isInCreativeMode(owner))) return;
         stack.decrement(amount);
     }
+
+    /**
+     * Gets and returns the translation key for the description of the given stack.
+     *
+     * @param stack The stack to get the description key of.
+     * @return A string representing the translation key pointing to the description of that stack. That description key
+     * is formed off of the {@link ItemStack#getTranslationKey()} of the given stack, added '.desc'.
+     */
+    public static String getDescriptionTranslationKey(@NotNull ItemStack stack) {
+        return stack.getTranslationKey() + ".desc";
+    }
 }
