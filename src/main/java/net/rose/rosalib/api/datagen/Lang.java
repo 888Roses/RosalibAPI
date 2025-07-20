@@ -96,16 +96,6 @@ public abstract class Lang extends FabricLanguageProvider {
     }
 
     /**
-     * Generates an item lang key.
-     *
-     * @param item The item for which you wish to generate translation.
-     * @param name The name of the item as shown in-game.
-     */
-    protected void item(Item item, String name) {
-        lang.add(item, name);
-    }
-
-    /**
      * Generates an item lang key for the item, added a suffix. This means that for the item "banana_split" with the
      * suffix "burnt", the generated lang key will be "banana_split_burnt".
      *
@@ -120,19 +110,24 @@ public abstract class Lang extends FabricLanguageProvider {
     }
 
     /**
-     * Generates an item lang key similarly to how {@link Lang#item(Item, String)} does. Adds a description to it.
-     * Please note that this description <b>is not automatically appended to the item tooltip.</b> Rather, the while the
-     * key is being generated you still need to override
-     * {@link Item#appendTooltip(ItemStack, World, List, TooltipContext)} and use said translation key to have your
-     * description be shown in-game.
+     * Generates an item lang key for an item's name and description. Please note that this description <b>is not
+     * automatically appended to the item tooltip.</b> Rather, the while the key is being generated you still need to
+     * override {@link Item#appendTooltip(ItemStack, World, List, TooltipContext)} and use said translation key to have
+     * your description be shown in-game.
      *
-     * @param item The item for which you wish to generate translation.
-     * @param name The name of the item as shown in-game.
-     * @param desc The description of the item as shown in-game.
+     * @param item         The item for which you wish to generate translation.
+     * @param name         The name of the item as shown in-game.
+     * @param descriptions The description lines of the item as shown in-game.
      */
-    protected void item(Item item, String name, String desc) {
-        item(item, name);
-        subItem(item, "desc", desc);
+    protected void item(Item item, String name, String... descriptions) {
+        lang.add(item.getTranslationKey(), name);
+
+        var descCount = 0;
+        for (var description : descriptions) {
+            final var key = "desc" + (descCount > 0 ? String.valueOf(descCount) : "");
+            subItem(item, key, description);
+            descCount++;
+        }
     }
 
     /**
