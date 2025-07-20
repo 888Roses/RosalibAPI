@@ -20,9 +20,14 @@ public class TextUtil {
         return lh.append(text).append(rh);
     }
 
-    public static MutableText getKeyBindingText(Function<GameOptions, KeyBinding> key) {
-        final var useOption = key.apply(MinecraftClient.getInstance().options).getTranslationKey();
-        final var optionText = Text.translatable(useOption).formatted(Formatting.GRAY);
+    public static MutableText getKeyBindingText(Function<GameOptions, KeyBinding> key, boolean useKeyName) {
+        final var option = key.apply(MinecraftClient.getInstance().options);;
+        final var optionName = useKeyName ? option.getBoundKeyTranslationKey() : option.getTranslationKey();
+        final var optionText = Text.translatable(optionName).formatted(Formatting.GRAY);
         return TextUtil.inBrackets(optionText, null);
+    }
+
+    public static MutableText getKeyBindingText(Function<GameOptions, KeyBinding> key) {
+        return getKeyBindingText(key, false);
     }
 }
