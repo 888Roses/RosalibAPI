@@ -1,4 +1,4 @@
-package net.rose.rosalib.data;
+package net.rose.rosalib.tests.data;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
