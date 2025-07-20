@@ -13,7 +13,7 @@
   "environment": "*",
   "entrypoints": {
     "fabric-datagen": [
-      "net.rose.rosalib.data.RosalibDataGenerator"
+      "net.rose.rosalib.tests.data.RosalibDataGenerator"
     ],
     "client": [
       "net.rose.rosalib.client.RosalibClient"

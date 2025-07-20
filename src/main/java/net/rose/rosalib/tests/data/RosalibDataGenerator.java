@@ -7,6 +7,7 @@ public class RosalibDataGenerator implements DataGeneratorEntrypoint {
 
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-        FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+        var pack = fabricDataGenerator.createPack();
+        pack.addProvider(ModLanguageProvider::new);
     }
 }

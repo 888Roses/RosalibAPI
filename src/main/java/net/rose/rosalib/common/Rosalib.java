@@ -2,6 +2,7 @@ package net.rose.rosalib.common;
 
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import net.rose.rosalib.tests.RosalibTests;
 import org.jetbrains.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ public class Rosalib implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        RosalibTests.onInitialize();
     }
 
     // region Linking
