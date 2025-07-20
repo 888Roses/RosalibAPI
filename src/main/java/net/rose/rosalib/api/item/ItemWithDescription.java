@@ -11,6 +11,7 @@ import net.rose.rosalib.api.util.ItemStackUtil;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Represents a normal {@link Item} with a description. The description is defined in your {@link Lang}, or by hand in
@@ -19,7 +20,7 @@ import java.util.List;
  * @see ItemStackUtil#getDescriptionTranslationKey(ItemStack)
  */
 public class ItemWithDescription extends Item {
-    private final Object[] descriptionArguments;
+    private final Supplier<Object>[] descriptionArguments;
 
     /**
      * Creates a new instance of that item.
@@ -27,7 +28,7 @@ public class ItemWithDescription extends Item {
      * @param settings             The settings of that item.
      * @param descriptionArguments Values used by the description when formatting it. Can be left empty.
      */
-    public ItemWithDescription(Settings settings, Object... descriptionArguments) {
+    public ItemWithDescription(Settings settings, Supplier<Object>... descriptionArguments) {
         super(settings);
         this.descriptionArguments = descriptionArguments;
     }
@@ -35,7 +36,9 @@ public class ItemWithDescription extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         final var descriptionKey = ItemStackUtil.getDescriptionTranslationKey(stack);
-        final var translation = Text.translatable(descriptionKey, descriptionArguments);
+        final var arguments = new Object[descriptionArguments.length];
+        for (var i = 0; i < descriptionArguments.length; i++) arguments[i] = descriptionArguments[i].get();
+        final var translation = Text.translatable(descriptionKey, arguments);
         tooltip.add(translation.formatted(Formatting.DARK_GRAY));
     }
 }
