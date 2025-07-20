@@ -1,4 +1,4 @@
-package net.rose.rosalib.common.init;
+package net.rose.rosalib.tests.init;
 
 import dev.onyxstudios.cca.api.v3.component.Component;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;

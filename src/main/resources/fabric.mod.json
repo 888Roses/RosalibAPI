@@ -22,13 +22,13 @@
       "net.rose.rosalib.common.Rosalib"
     ],
     "cardinal-components-entity": [
-      "net.rose.rosalib.common.init.ModEntityComponents"
+      "net.rose.rosalib.tests.init.ModEntityComponents"
     ],
     "cardinal-components-world": [
-      "net.rose.rosalib.common.init.ModWorldComponents"
+      "net.rose.rosalib.tests.init.ModWorldComponents"
     ],
     "cardinal-components-block": [
-      "net.rose.rosalib.common.init.ModBlockComponents"
+      "net.rose.rosalib.tests.init.ModBlockComponents"
     ]
   },
   "mixins": [
