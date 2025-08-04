@@ -7,13 +7,14 @@ import org.joml.Quaternionf;
  */
 public class QuaternionUtil {
     /**
-     * Creates a new {@link Quaternionf} using the x, y and z euler angles as a rotation. Those angles are measured in
-     * degrees.
+     * Creates a new {@link Quaternionf} and rotates it using the XYZ angle rotation.
      *
-     * @param x The X rotation of the quaternion.
-     * @param y The Y rotation of the quaternion.
-     * @param z The Z rotation of the quaternion.
-     * @return A new quaternion using those x y and z rotations.
+     * @param x X angle of the rotation.
+     * @param y Y angle of the rotation.
+     * @param z Z angle of the rotation.
+     * @return The created {@link Quaternionf} with its rotations applied.
+     * @apiNote The given angles are measured in degrees. See {@link #eulerAngleRad(double, double, double)} to use
+     * radians instead.
      * @see #eulerAngleRad(double, double, double)
      */
     public static Quaternionf eulerAngleDeg(double x, double y, double z) {
@@ -21,16 +22,17 @@ public class QuaternionUtil {
     }
 
     /**
-     * Creates a new {@link Quaternionf} using the x, y and z euler angles as a rotation. Those angles are measured in
-     * radians.
+     * Creates a new {@link Quaternionf} and rotates it using the XYZ angle rotation.
      *
-     * @param x The X rotation of the quaternion.
-     * @param y The Y rotation of the quaternion.
-     * @param z The Z rotation of the quaternion.
-     * @return A new quaternion using those x y and z rotations.
+     * @param x X angle of the rotation.
+     * @param y Y angle of the rotation.
+     * @param z Z angle of the rotation.
+     * @return The created {@link Quaternionf} with its rotations applied.
+     * @apiNote The given angles are measured in radians. See {@link #eulerAngleDeg(double, double, double)} to use
+     * degrees instead.
      * @see #eulerAngleDeg(double, double, double)
      */
     public static Quaternionf eulerAngleRad(double x, double y, double z) {
-        return new Quaternionf().rotationXYZ((float)x, (float)y, (float)z);
+        return new Quaternionf().rotationXYZ((float) x, (float) y, (float) z);
     }
 }
