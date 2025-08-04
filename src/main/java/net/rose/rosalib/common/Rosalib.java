@@ -13,7 +13,8 @@ public class Rosalib implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        RosalibTests.onInitialize();
+        // Remember to disabled on builds!
+        // RosalibTests.onInitialize();
     }
 
     // region Linking
