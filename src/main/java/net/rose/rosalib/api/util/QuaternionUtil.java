@@ -14,10 +14,10 @@ public class QuaternionUtil {
      * @param y The Y rotation of the quaternion.
      * @param z The Z rotation of the quaternion.
      * @return A new quaternion using those x y and z rotations.
-     * @see #eulerAngleRad(float, float, float)
+     * @see #eulerAngleRad(double, double, double)
      */
     public static Quaternionf eulerAngleDeg(double x, double y, double z) {
-        return eulerAngleRad((float) Math.toRadians(x), (float) Math.toRadians(y), (float) Math.toRadians(z));
+        return eulerAngleRad(Math.toRadians(x), Math.toRadians(y), Math.toRadians(z));
     }
 
     /**
@@ -30,7 +30,7 @@ public class QuaternionUtil {
      * @return A new quaternion using those x y and z rotations.
      * @see #eulerAngleDeg(double, double, double)
      */
-    public static Quaternionf eulerAngleRad(float x, float y, float z) {
-        return new Quaternionf().rotationXYZ(x, y, z);
+    public static Quaternionf eulerAngleRad(double x, double y, double z) {
+        return new Quaternionf().rotationXYZ((float)x, (float)y, (float)z);
     }
 }
